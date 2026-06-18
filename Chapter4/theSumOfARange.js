@@ -20,10 +20,12 @@
 
 // Your code here.
 
-function range(start, end, step = 1) {
+function range(start, end, step = start <= end ? 1 : -1) {
   let arr = [];
-
-  for (let i = start; step < 0 ? i >= end : i <= end; i = i + step) {
+  if (step === 0) {
+    throw new Error("step cannot be 0");
+  }
+  for (let i = start; step < 0 ? i >= end : i <= end; i += step) {
     arr.push(i);
   }
   return arr;
@@ -31,7 +33,7 @@ function range(start, end, step = 1) {
 
 function sum(arr) {
   let sum = 0;
-  for (num of arr) {
+  for (const num of arr) {
     sum += num;
   }
   return sum;

@@ -56,6 +56,22 @@ function prepend(value, list) {
 function nth(list, num) {
   return listToArray(list)[num];
 }
+//refactored nth iterative version
+function nthIterative(list, num) {
+  let current = list;
+  for (let i = 0; i <= num; i++) {
+    if (current.value === null) return undefined;
+    current = list.rest;
+  }
+  return current ? current.value : undefined;
+}
+//refactored nth recursive version
+function nthrecursive(list, num) {
+  if (list.value === null) return undefined;
+  if (num === 0) return list.value;
+
+  return nthrecursive(list.rest, num - 1);
+}
 console.log(arrayToList([10, 20]));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30])));
@@ -64,3 +80,5 @@ console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
+console.log(nthIterative(arrayToList([49, 10, 20, 30]), 1));
+console.log(nthrecursive(arrayToList([49, 10, 20, 30]), 1));

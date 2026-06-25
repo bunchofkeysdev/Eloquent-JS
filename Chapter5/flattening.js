@@ -5,7 +5,9 @@ let arrays = [[1, 2, 3], [4, 5], [6]];
 // Your code here.
 
 function flat(arr) {
-  return arr.reduce((e, i) => e.concat(i));
+  return arr.reduce((e, i) => {
+    return e.concat(i);
+  }, []);
 }
 console.log(flat(arrays));
 // → [1, 2, 3, 4, 5, 6]
